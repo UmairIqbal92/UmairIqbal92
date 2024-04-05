@@ -1,4 +1,4 @@
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/L1R1tvI9svkIWwpVYr" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/Pluralsight-computer-technology-coding-L1R1tvI9svkIWwpVYr">via GIPHY</a></p>
+<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/L1R1tvI9svkIWwpVYr" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
 
 <h1 align="center">Hi 👋, I'm Umair Iqbal</h1>
 <h3 align="center">A passionate Graphic Designer & Developer from Pakistan</h3>
@@ -21,13 +21,17 @@
 
 - ⚡ Fun fact **I think I am funny & try to learn new interesting things.**
 
+### Blogs posts
+<!-- BLOG-POST-LIST:START -->
+<!-- BLOG-POST-LIST:END -->
+
 <h3 align="left">Connect with me:</h3>
 <p align="left">
 <a href="https://dev.to/umairiqbal92" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/devto.svg" alt="umairiqbal92" height="30" width="40" /></a>
 <a href="https://twitter.com/umairiqbal99" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="umairiqbal99" height="30" width="40" /></a>
 <a href="https://linkedin.com/in/umairiqbal99" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="umairiqbal99" height="30" width="40" /></a>
 <a href="https://instagram.com/the_umairiqbal9" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="the_umairiqbal9" height="30" width="40" /></a>
-<a href="https://medium.com/theumairiqbal" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/medium.svg" alt="theumairiqbal" height="30" width="40" /></a>
+<a href="https://medium.com/@theumairiqbal" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/medium.svg" alt="@theumairiqbal" height="30" width="40" /></a>
 <a href="https://discord.gg/umaireee" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="umaireee" height="30" width="40" /></a>
 </p>
 
