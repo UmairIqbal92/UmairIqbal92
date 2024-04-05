@@ -1,3 +1,7 @@
+<h1 align="center">Hi 👋, I'm Umair Iqbal</h1>
+<h3 align="center">A passionate Graphic Designer & Developer from Pakistan</h3>
+
+
 <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
  padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
  border-radius: 8px; will-change: transform;">
@@ -8,8 +12,7 @@
 <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGBi8tn_G4&#x2F;72zULS5wpq62kqvGuW58jg&#x2F;watch?utm_content=DAGBi8tn_G4&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Work &gt; Eat &gt; Sleep</a> by Umair Iqbal
 
 
-<h1 align="center">Hi 👋, I'm Umair Iqbal</h1>
-<h3 align="center">A passionate Graphic Designer & Developer from Pakistan</h3>
+
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=umairiqbal92&label=Profile%20views&color=0e75b6&style=flat" alt="umairiqbal92" /> </p>
 
