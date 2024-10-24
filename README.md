@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Umair Iqbal</h1>
-<h3 align="center">A passionate Graphic Designer & Developer from Pakistan</h3>
+<h3 align="center">A passionate Graphic Designer & Developer</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=umairiqbal92&label=Profile%20views&color=0e75b6&style=flat" alt="umairiqbal92" /> </p>
 
