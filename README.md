@@ -9,13 +9,9 @@
 
 - 🌱 I’m currently learning **Ai Technology | Bots**
 
-- 👨‍💻 All of my projects are available at [theumairiqbal.com](theumairiqbal.com)
-
 - 💬 Ask me about **New tools in Ai.**
 
 - 📫 How to reach me **mail@theumairiqbal.com | TG: @umairiqbal100 |**
-
-- 📄 Know about my experiences [theumairiqbal.com](theumairiqbal.com)
 
 - ⚡ Fun fact **I think I am funny & try to learn new interesting things.**
 
