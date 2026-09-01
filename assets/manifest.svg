@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="258" viewBox="0 0 1000 258" role="img" aria-label="Payload manifest"><title>Payload manifest</title><style>
+.s{font-family:"Inter","SF Pro Display","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif}.m{font-family:"JetBrains Mono","SF Mono",Menlo,Consolas,"Courier New",monospace}
+.tw{animation:tw 4s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:1}}
+.up{opacity:0;animation:up .8s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.fi{opacity:0;animation:fi 1s ease-out forwards}
+@keyframes fi{to{opacity:1}}
+.blink{animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.draw{stroke-dasharray:2000;stroke-dashoffset:2000;animation:draw 3s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.pulse{animation:pulse 2.6s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.35);opacity:.4}}
+</style><defs>
+<filter id="g6" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="6"/></filter>
+<filter id="g3" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3"/></filter>
+<filter id="g1" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="1.2"/></filter>
+<linearGradient id="hline" x1="0" x2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0"/><stop offset=".5" stop-color="#ffffff" stop-opacity=".6"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+<linearGradient id="vfade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000000" stop-opacity="0"/><stop offset="1" stop-color="#000000"/></linearGradient>
+</defs><rect width="1000" height="258" rx="16" fill="#000000"/><rect x=".5" y=".5" width="999" height="257" rx="16" fill="none" stroke="#1a1a1a"/><text x="28" y="34" class="m" font-size="10" fill="#71767b" text-anchor="start" letter-spacing="2.5" >PAYLOAD MANIFEST · FEATURED BUILDS</text><text x="972" y="34" class="m" font-size="9" fill="#3a3f44" text-anchor="end" letter-spacing="2" >3 PAYLOADS · SEE UMAIRIQBAL.COM</text><line x1="28" y1="48" x2="972" y2="48" stroke="#1a1a1a"/><g class="up" style="animation-delay:0.20s">
+<text x="28" y="96" class="m" font-size="10" fill="#3a3f44" letter-spacing="2">P01</text>
+<text x="76" y="92" class="s" font-size="15" font-weight="400" fill="#ffffff">TODO · Flagship agent product</text>
+<text x="76" y="110" class="m" font-size="10" fill="#71767b" letter-spacing="1">LLM · MCP · Next.js</text>
+<rect x="860" y="84" width="112" height="22" rx="11" fill="none" stroke="#262626"/>
+<circle cx="876" cy="95" r="2.5" fill="#ffffff" class="blink"/>
+<text x="888" y="99" class="m" font-size="9" fill="#e7e9ea" letter-spacing="2">T-MINUS</text>
+<line x1="28" y1="122" x2="972" y2="122" stroke="#1a1a1a"/>
+</g><g class="up" style="animation-delay:0.32s">
+<text x="28" y="154" class="m" font-size="10" fill="#3a3f44" letter-spacing="2">P02</text>
+<text x="76" y="150" class="s" font-size="15" font-weight="400" fill="#ffffff">TODO · Automation framework</text>
+<text x="76" y="168" class="m" font-size="10" fill="#71767b" letter-spacing="1">n8n · Node · Postgres</text>
+<rect x="860" y="142" width="112" height="22" rx="11" fill="none" stroke="#262626"/>
+<circle cx="876" cy="153" r="2.5" fill="#ffffff" class="blink"/>
+<text x="888" y="157" class="m" font-size="9" fill="#e7e9ea" letter-spacing="2">T-MINUS</text>
+<line x1="28" y1="180" x2="972" y2="180" stroke="#1a1a1a"/>
+</g><g class="up" style="animation-delay:0.44s">
+<text x="28" y="212" class="m" font-size="10" fill="#3a3f44" letter-spacing="2">P03</text>
+<text x="76" y="208" class="s" font-size="15" font-weight="400" fill="#ffffff">TODO · Design system toolkit</text>
+<text x="76" y="226" class="m" font-size="10" fill="#71767b" letter-spacing="1">Figma · React · Tailwind</text>
+<rect x="860" y="200" width="112" height="22" rx="11" fill="none" stroke="#262626"/>
+<circle cx="876" cy="211" r="2.5" fill="#ffffff" class="blink"/>
+<text x="888" y="215" class="m" font-size="9" fill="#e7e9ea" letter-spacing="2">T-MINUS</text>
+<line x1="28" y1="238" x2="972" y2="238" stroke="#1a1a1a"/>
+</g><path d="M12 22V12H22 M978 12H988V22 M12 236V246H22 M978 246H988V236" fill="none" stroke="#3a3f44" stroke-width="1"/></svg>

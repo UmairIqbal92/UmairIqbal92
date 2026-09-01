@@ -1,9 +1,10 @@
 name: Latest Posts
 
 on:
-  schedule:
-    - cron: "0 6 * * *"
   workflow_dispatch:
+  # TODO(umair): enable once feed_list is real
+  # schedule:
+  #   - cron: "0 6 * * *"
 
 permissions:
   contents: write

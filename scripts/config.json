@@ -1,0 +1,42 @@
+{
+  "name": "UMAIR IQBAL",
+  "handle": "UmairIqbal92",
+  "title": "AI SOLUTIONS ARCHITECT",
+  "tagline": "Autonomous systems. Designed to ship.",
+  "site": "umairiqbal.com",
+  "email": "hello@umairiqbal.com",
+  "mission": "AGENT-OS",
+  "vehicle": "UMAIR-1",
+  "location": "TODO · EARTH",
+  "systems": [
+    {"group": "INTELLIGENCE", "items": [
+      ["LLM Orchestration", 94], ["Agent Architectures", 92], ["MCP · Tool Use", 90],
+      ["RAG · Vector Search", 86], ["Evals · Guardrails", 82], ["Fine-tuning", 70]
+    ]},
+    {"group": "ENGINEERING", "items": [
+      ["Python", 93], ["Node.js · TypeScript", 90], ["FastAPI · Express", 88],
+      ["Next.js · React", 84], ["Postgres · Redis", 80], ["Docker · CI/CD", 78]
+    ]},
+    {"group": "AUTOMATION", "items": [
+      ["n8n · Make · Zapier", 95], ["Workflow Design", 92], ["API Integration", 90],
+      ["Bots · Assistants", 89], ["Data Pipelines", 78], ["Observability", 74]
+    ]},
+    {"group": "DESIGN", "items": [
+      ["Product Design", 90], ["Brand Systems", 88], ["Figma", 92],
+      ["Motion · Micro-UX", 80], ["Adobe Suite", 86], ["3D · Blender", 55]
+    ]}
+  ],
+  "swarm": [
+    {"id": "PLANNER",   "x": 220, "y": 90,  "desc": "goal → task graph"},
+    {"id": "RESEARCH",  "x": 130, "y": 215, "desc": "grounded context"},
+    {"id": "CODER",     "x": 370, "y": 250, "desc": "python · node"},
+    {"id": "DESIGNER",  "x": 640, "y": 250, "desc": "ui · brand · motion"},
+    {"id": "OPS",       "x": 870, "y": 215, "desc": "deploy · monitor"},
+    {"id": "QA",        "x": 780, "y": 90,  "desc": "evals · guardrails"}
+  ],
+  "builds": [
+    {"name": "TODO · Flagship agent product", "stack": "LLM · MCP · Next.js", "status": "T-MINUS"},
+    {"name": "TODO · Automation framework",   "stack": "n8n · Node · Postgres", "status": "T-MINUS"},
+    {"name": "TODO · Design system toolkit",  "stack": "Figma · React · Tailwind", "status": "T-MINUS"}
+  ]
+}
