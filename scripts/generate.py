@@ -140,10 +140,8 @@ def fetch_achievements(login: str) -> list[dict]:
     out, seen = [], set()
     for m in re.finditer(r"<img\b[^>]*>", html):
         tag = m.group(0)
-        if "profile/achievements" not in tag:
-            continue
-        src = re.search(r'src="([^"]+)"', tag)
         alt = re.search(r'alt="Achievement: ([^"]+)"', tag)
+        src = re.search(r'src="([^"]+)"', tag)
         if not src or not alt:
             continue
         url, name = src.group(1), alt.group(1)
@@ -407,7 +405,7 @@ def capabilities(c: dict) -> str:
 
 
 def pipeline(c: dict) -> str:
-    stages = [("Intent", "goal & context"), ("Plan", "break it down"), ("Build", "code & design"),
+    stages = [("Intent", "goal & context"), ("Plan", "break it down"), ("Build", "code & tools"),
               ("Verify", "evals & guardrails"), ("Ship", "deploy & observe")]
     agents = c["swarm"]
     h = 380

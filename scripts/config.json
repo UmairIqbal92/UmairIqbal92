@@ -2,7 +2,7 @@
   "name": "Umair Iqbal",
   "handle": "UmairIqbal92",
   "title": "AI SOLUTIONS ARCHITECT",
-  "tagline": "I design and ship autonomous AI systems.",
+  "tagline": "I build and ship autonomous AI systems.",
   "site": "umairiqbal.com",
   "email": "hello@umairiqbal.com",
   "systems": [
@@ -92,35 +92,6 @@
           74
         ]
       ]
-    },
-    {
-      "group": "DESIGN",
-      "items": [
-        [
-          "Product Design",
-          90
-        ],
-        [
-          "Brand Systems",
-          88
-        ],
-        [
-          "Figma",
-          92
-        ],
-        [
-          "Motion · Micro-UX",
-          80
-        ],
-        [
-          "Adobe Suite",
-          86
-        ],
-        [
-          "3D · Blender",
-          55
-        ]
-      ]
     }
   ],
   "swarm": [
@@ -137,8 +108,8 @@
       "desc": "Python · Node"
     },
     {
-      "id": "Designer",
-      "desc": "UI · brand · motion"
+      "id": "Integrator",
+      "desc": "APIs · MCP · tools"
     },
     {
       "id": "Ops",
