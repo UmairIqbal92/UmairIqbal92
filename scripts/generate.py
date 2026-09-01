@@ -501,9 +501,17 @@ def achievements(c: dict, items: list[dict]) -> str:
         items = [{"name": a["name"], "tier": a.get("tier", 1), "img": ""} for a in c.get("achievements", [])]
     per_row = 4
     rows = max(1, (len(items) + per_row - 1) // per_row)
-    ch = 150
+    ch = 176
     h = 96 + rows * ch + 10
     body = [panel(h), title("Achievements", "Earned on GitHub")]
+    body.append(f"""<defs>
+<linearGradient id="sheen" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="{WHITE}" stop-opacity="0"/><stop offset=".5" stop-color="{WHITE}" stop-opacity=".45"/><stop offset="1" stop-color="{WHITE}" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="glassTop" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="{WHITE}" stop-opacity=".22"/><stop offset="1" stop-color="{WHITE}" stop-opacity="0"/>
+</linearGradient>
+</defs>""")
     if not items:
         body.append(t(PAD, 130, "None yet.", 16, MUTED))
         return svg(h, "".join(body), "Achievements")
@@ -512,16 +520,37 @@ def achievements(c: dict, items: list[dict]) -> str:
         x = PAD + (i % per_row) * (cw + 16)
         y = 92 + (i // per_row) * ch
         cx = x + cw / 2
+        tier = a.get("tier", 1)
         body.append(f'<g class="in" style="animation-delay:{.15+i*.1:.2f}s">'
-                    f'<rect x="{x:.0f}" y="{y}" width="{cw:.0f}" height="{ch-14}" rx="16" fill="{BG}" stroke="{BORDER}"/>')
-        if a.get("img"):
-            body.append(f'<image href="{a["img"]}" x="{cx-34:.0f}" y="{y+14}" width="68" height="68"/>')
+                    f'<rect x="{x:.0f}" y="{y}" width="{cw:.0f}" height="{ch-14}" rx="16" fill="{WHITE}" fill-opacity=".03" stroke="{WHITE}" stroke-opacity=".14"/>')
+        img = a.get("img")
+        # stacked ghosts behind the badge when earned more than once
+        if tier > 1:
+            for k in range(min(tier, 3) - 1, 0, -1):
+                dx, op = 9 * k, .18 + .18 * (3 - k)
+                if img:
+                    body.append(f'<image href="{img}" x="{cx-34-dx:.0f}" y="{y+14+dx*.4:.0f}" width="68" height="68" opacity="{op:.2f}"/>')
+                else:
+                    body.append(f'<g opacity="{op:.2f}">{medal(cx - dx, y + 48 + dx*.4)}</g>')
+        if img:
+            body.append(f'<image href="{img}" x="{cx-34:.0f}" y="{y+14}" width="68" height="68"/>')
         else:
             body.append(medal(cx, y + 48))
-        body.append(t(cx, y + 108, a["name"], 16, WHITE, 600, "middle"))
-        if a.get("tier", 1) > 1:
-            body.append(f'<rect x="{cx-22:.0f}" y="{y+116}" width="44" height="18" rx="9" fill="{FILL}" stroke="{BORDER}"/>'
-                        f'{t(cx, y + 129, "x%d" % a["tier"], 12, TEXT, 600, "middle")}')
+        body.append(t(cx, y + 110, a["name"], 16, WHITE, 600, "middle"))
+        if tier > 1:
+            # glass counter bubble on the badge
+            bx, by, r = cx + 34, y + 24, 17
+            cid = f"cl{i}"
+            body.append(f'<clipPath id="{cid}"><circle cx="{bx:.0f}" cy="{by}" r="{r}"/></clipPath>'
+                        f'<circle cx="{bx:.0f}" cy="{by}" r="{r}" fill="{BG}"/>'
+                        f'<circle cx="{bx:.0f}" cy="{by}" r="{r}" fill="{WHITE}" fill-opacity=".16" stroke="{WHITE}" stroke-opacity=".7" stroke-width="1.2"/>'
+                        f'<ellipse cx="{bx:.0f}" cy="{by-7}" rx="{r-4}" ry="6" fill="url(#glassTop)"/>'
+                        f'<rect x="{bx-60:.0f}" y="{by-r}" width="22" height="{2*r}" fill="url(#sheen)" clip-path="url(#{cid})" transform="skewX(-20)">'
+                        f'<animate attributeName="x" values="{bx-60:.0f};{bx+40:.0f};{bx+40:.0f}" keyTimes="0;.25;1" dur="6s" begin="{1+i*.6:.1f}s" repeatCount="indefinite"/></rect>'
+                        f'{t(bx, by + 5, "x%d" % tier, 14, WHITE, 700, "middle")}')
+            body.append(t(cx, y + 132, "Earned %d times" % tier, 13, MUTED, 400, "middle"))
+        else:
+            body.append(t(cx, y + 132, "Earned once", 13, MUTED, 400, "middle"))
         body.append("</g>")
     return svg(h, "".join(body), "Achievements")
 
