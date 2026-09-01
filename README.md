@@ -22,6 +22,8 @@
 
 <img src="assets/private.svg" width="100%" alt="Private work" />
 
+<img src="assets/achievements.svg" width="100%" alt="GitHub achievements" />
+
 <!-- BLOG-POST-LIST:START -->
 <!-- BLOG-POST-LIST:END -->
 

@@ -188,5 +188,23 @@
       "name": "Lantern",
       "teaser": "Voice and chat assistant stack built on"
     }
+  ],
+  "achievements": [
+    {
+      "name": "Pull Shark",
+      "tier": 2
+    },
+    {
+      "name": "YOLO",
+      "tier": 1
+    },
+    {
+      "name": "Quickdraw",
+      "tier": 1
+    },
+    {
+      "name": "Starstruck",
+      "tier": 1
+    }
   ]
 }

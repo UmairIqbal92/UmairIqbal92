@@ -7,6 +7,8 @@ Pure stdlib. `--demo` uses synthetic data.
 from __future__ import annotations
 
 import argparse
+import base64
+import re
 import datetime as dt
 import json
 import os
@@ -121,6 +123,37 @@ def fetch(login: str, token: str) -> dict:
         "alltime": sum(t for _, t, _ in years),
         "since": created.year,
     }
+
+
+def fetch_achievements(login: str) -> list[dict]:
+    """GitHub has no API for achievements; parse the public profile page and embed badge images."""
+    try:
+        req = urllib.request.Request(f"https://github.com/{login}?tab=achievements",
+                                     headers={"User-Agent": "Mozilla/5.0 profile-renderer"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            html = r.read().decode("utf-8", "replace")
+    except Exception as e:  # noqa: BLE001
+        print(f"achievements: fetch failed ({e})", file=sys.stderr)
+        return []
+    out, seen = [], set()
+    for m in re.finditer(r'<img[^>]+src="(https://github\.com/images/modules/profile/achievements/[^"]+)"[^>]*alt="Achievement: ([^"]+)"', html):
+        url, name = m.group(1), m.group(2)
+        if name in seen:
+            continue
+        seen.add(name)
+        tier = 1
+        tm = re.search(r'achievement-tier-label[^>]*>\s*x(\d+)', html[m.end():m.end() + 800])
+        if tm:
+            tier = int(tm.group(1))
+        img = ""
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "profile-renderer"}), timeout=30) as r:
+                img = "data:image/png;base64," + base64.b64encode(r.read()).decode()
+        except Exception as e:  # noqa: BLE001
+            print(f"achievements: image failed for {name} ({e})", file=sys.stderr)
+        out.append({"name": name, "tier": tier, "img": img})
+    print(f"achievements: {len(out)} found", file=sys.stderr)
+    return out
 
 
 def demo() -> dict:
@@ -448,6 +481,42 @@ def private_work(c: dict, d: dict) -> str:
     return svg(h, "".join(body), "Private work")
 
 
+def medal(x: float, y: float) -> str:
+    return (f'<circle cx="{x}" cy="{y}" r="30" fill="{FILL}" stroke="{BORDER}"/>'
+            f'<circle cx="{x}" cy="{y}" r="18" fill="none" stroke="{WHITE}" stroke-width="2"/>'
+            f'<circle cx="{x}" cy="{y}" r="6" fill="{WHITE}"/>')
+
+
+def achievements(c: dict, items: list[dict]) -> str:
+    if not items:
+        items = [{"name": a["name"], "tier": a.get("tier", 1), "img": ""} for a in c.get("achievements", [])]
+    per_row = 4
+    rows = max(1, (len(items) + per_row - 1) // per_row)
+    ch = 150
+    h = 96 + rows * ch + 10
+    body = [panel(h), title("Achievements", "Earned on GitHub")]
+    if not items:
+        body.append(t(PAD, 130, "None yet.", 16, MUTED))
+        return svg(h, "".join(body), "Achievements")
+    cw = (W - 2 * PAD - (per_row - 1) * 16) / per_row
+    for i, a in enumerate(items):
+        x = PAD + (i % per_row) * (cw + 16)
+        y = 92 + (i // per_row) * ch
+        cx = x + cw / 2
+        body.append(f'<g class="in" style="animation-delay:{.15+i*.1:.2f}s">'
+                    f'<rect x="{x:.0f}" y="{y}" width="{cw:.0f}" height="{ch-14}" rx="16" fill="{BG}" stroke="{BORDER}"/>')
+        if a.get("img"):
+            body.append(f'<image href="{a["img"]}" x="{cx-34:.0f}" y="{y+14}" width="68" height="68"/>')
+        else:
+            body.append(medal(cx, y + 48))
+        body.append(t(cx, y + 108, a["name"], 16, WHITE, 600, "middle"))
+        if a.get("tier", 1) > 1:
+            body.append(f'<rect x="{cx-22:.0f}" y="{y+116}" width="44" height="18" rx="9" fill="{FILL}" stroke="{BORDER}"/>'
+                        f'{t(cx, y + 129, "x%d" % a["tier"], 12, TEXT, 600, "middle")}')
+        body.append("</g>")
+    return svg(h, "".join(body), "Achievements")
+
+
 def contact(c: dict) -> str:
     rows = [("Website", c["site"]), ("Email", c["email"]), ("GitHub", f"github.com/{c['handle']}"),
             ("LinkedIn", c.get("linkedin", "")), ("X", c.get("x", "")), ("Telegram", c.get("telegram", ""))]
@@ -485,6 +554,7 @@ def main() -> None:
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
     live = bool(token) and not args.demo
     data = fetch(args.user, token) if live else demo()
+    badges = fetch_achievements(args.user) if live else []
     ASSETS.mkdir(exist_ok=True)
     for old in ASSETS.glob("*.svg"):
         old.unlink()
@@ -495,6 +565,7 @@ def main() -> None:
         "capabilities.svg": capabilities(CONFIG),
         "pipeline.svg": pipeline(CONFIG),
         "private.svg": private_work(CONFIG, data),
+        "achievements.svg": achievements(CONFIG, badges),
         "contact.svg": contact(CONFIG),
         "footer.svg": footer(CONFIG),
     }
