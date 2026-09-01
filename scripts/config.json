@@ -141,7 +141,6 @@
   "linkedin": "",
   "x": "",
   "telegram": "",
-  "private_label": "Dozens of",
   "private_projects": [
     {
       "name": "Atlas",
@@ -177,5 +176,7 @@
       "name": "Starstruck",
       "tier": 1
     }
-  ]
+  ],
+  "private_headline": "Most of my work is private.",
+  "private_sub": "Client systems, internal tools and experiments that never go public."
 }

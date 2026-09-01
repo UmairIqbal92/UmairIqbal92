@@ -300,7 +300,7 @@ def overview(d: dict) -> str:
         if i:
             body.append(f'<line x1="{x-18:.0f}" y1="92" x2="{x-18:.0f}" y2="176" stroke="{BORDER}"/>')
     extras = [("Commits", d["commits"]), ("Pull requests", d["prs"]), ("Stars", d["stars"]),
-              ("Followers", d["followers"]), ("Public repos", d["repos"]), ("Private repos", d["private_repos"])]
+              ("Followers", d["followers"]), ("Public repos", d["repos"])]
     line = "    ·    ".join(f"{k} {fmt(v)}" for k, v in extras if v)
     body.append(t(PAD, 212, line, 15, MUTED, 400, cls="in", extra='style="animation-delay:.7s"'))
     return svg(h, "".join(body), "Overview")
@@ -456,12 +456,8 @@ def lock_icon(x: float, y: float) -> str:
 
 def private_work(c: dict, d: dict) -> str:
     projects = c.get("private_projects", [])
-    n = d.get("private_repos", 0) or 0
-    headline = f"{n} private repositories" if n else f"{c.get('private_label', 'Dozens of')} private repositories"
-    sub = "Client work, internal tools and experiments that never go public."
-    pc = d.get("private_contribs", 0) or 0
-    if pc:
-        sub += f"  {fmt(pc)} private contributions in the last 12 months."
+    headline = c.get("private_headline", "Most of my work is private.")
+    sub = c.get("private_sub", "Client systems, internal tools and experiments that never go public.")
     h = 190 + 58 * len(projects) + 10
     body = [panel(h), title("Private work", "Not everything ships in public")]
     body.append(f'<g class="in" style="animation-delay:.15s">{t(PAD, 128, headline, 34, WHITE, 600)}'
