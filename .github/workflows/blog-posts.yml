@@ -1,0 +1,26 @@
+name: Latest Posts
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pull latest posts into README
+        uses: gautamkrishnar/blog-post-workflow@v1
+        with:
+          # TODO(umair): replace with real feeds (blog on umairiqbal.com, Medium, dev.to ...)
+          feed_list: "https://umairiqbal.com/feed"
+          max_post_count: 5
+          template: "- 🛰️ [$title]($url) <sub>$date</sub>$newline"
+          date_format: "mmm dd, yyyy"
+          commit_message: "chore: sync latest posts"

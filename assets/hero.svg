@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="900" height="430" viewBox="0 0 900 430" role="img" aria-label="Umair Iqbal — AI Solutions Architect — agent OS boot sequence">
+  <title>Umair Iqbal · Agent OS</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#060a12"/>
+      <stop offset="1" stop-color="#0b1020"/>
+    </linearGradient>
+    <radialGradient id="glowCyan" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowViolet" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#a78bfa" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="core" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#22d3ee" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0V30" fill="none" stroke="#1b2637" stroke-width="0.6"/>
+    </pattern>
+    <filter id="blur8" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <filter id="blur2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+    <clipPath id="c1"><rect x="0" y="-16" width="0" height="22"><animate attributeName="width" from="0" to="300" begin="0.4s" dur="0.9s" calcMode="discrete" values="0;12;24;36;48;60;72;84;96;108;120;132;144;156;168;180;192;204;216;228;240;252;264;276;288;300" fill="freeze"/></rect></clipPath>
+    <clipPath id="c2"><rect x="0" y="-16" width="0" height="22"><animate attributeName="width" from="0" to="420" begin="1.6s" dur="0.7s" fill="freeze"/></rect></clipPath>
+    <clipPath id="c3"><rect x="0" y="-16" width="0" height="22"><animate attributeName="width" from="0" to="420" begin="2.5s" dur="0.7s" fill="freeze"/></rect></clipPath>
+    <clipPath id="c4"><rect x="0" y="-16" width="0" height="22"><animate attributeName="width" from="0" to="420" begin="3.4s" dur="0.7s" fill="freeze"/></rect></clipPath>
+    <clipPath id="c5"><rect x="0" y="-16" width="0" height="22"><animate attributeName="width" from="0" to="420" begin="4.3s" dur="0.7s" fill="freeze"/></rect></clipPath>
+    <clipPath id="c6"><rect x="0" y="-16" width="0" height="22"><animate attributeName="width" from="0" to="420" begin="5.2s" dur="0.7s" fill="freeze"/></rect></clipPath>
+    <clipPath id="c7"><rect x="0" y="-22" width="0" height="30"><animate attributeName="width" from="0" to="420" begin="6.3s" dur="1.2s" fill="freeze"/></rect></clipPath>
+    <clipPath id="c8"><rect x="0" y="-16" width="0" height="22"><animate attributeName="width" from="0" to="420" begin="7.7s" dur="1.1s" fill="freeze"/></rect></clipPath>
+  </defs>
+
+  <style>
+    .mono { font-family: "JetBrains Mono", "Fira Code", "SFMono-Regular", Menlo, Consolas, "Courier New", monospace; }
+    .sans { font-family: "Inter", "Segoe UI", -apple-system, Helvetica, Arial, sans-serif; }
+    .t { fill: #cbd5e1; font-size: 13px; }
+    .dim { fill: #64748b; }
+    .ok { fill: #34d399; }
+    .cy { fill: #22d3ee; }
+    .vi { fill: #a78bfa; }
+    .am { fill: #fbbf24; }
+    .cursor { animation: blink 1s steps(2, start) infinite; }
+    @keyframes blink { to { visibility: hidden; } }
+    .fade { opacity: 0; animation: fadeIn 0.6s ease-out forwards; }
+    .d1 { animation-delay: 0.2s; } .d2 { animation-delay: 1.4s; } .d3 { animation-delay: 2.3s; }
+    .d4 { animation-delay: 3.2s; } .d5 { animation-delay: 4.1s; } .d6 { animation-delay: 5.0s; }
+    .d7 { animation-delay: 6.1s; } .d8 { animation-delay: 7.5s; } .d9 { animation-delay: 8.9s; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .pulse { animation: pulse 2.4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+    @keyframes pulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+    .ring { animation: ring 3s ease-out infinite; transform-origin: center; transform-box: fill-box; }
+    @keyframes ring { 0% { transform: scale(.4); opacity: .9; } 100% { transform: scale(1.6); opacity: 0; } }
+    .r2 { animation-delay: 1s; } .r3 { animation-delay: 2s; }
+    .node { opacity: 0; animation: nodeIn 0.5s ease-out forwards; }
+    .n1 { animation-delay: 3.5s; } .n2 { animation-delay: 3.7s; } .n3 { animation-delay: 3.9s; }
+    .n4 { animation-delay: 4.1s; } .n5 { animation-delay: 4.3s; } .n6 { animation-delay: 4.5s; }
+    @keyframes nodeIn { to { opacity: 1; } }
+    .live { animation: live 1.2s ease-in-out infinite; }
+    @keyframes live { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+    .scanline { animation: scan 6s linear infinite; }
+    @keyframes scan { 0% { transform: translateY(-120px); } 100% { transform: translateY(560px); } }
+  </style>
+
+  <!-- backdrop -->
+  <rect width="900" height="430" rx="18" fill="url(#bg)"/>
+  <rect width="900" height="430" rx="18" fill="url(#grid)"/>
+  <circle cx="690" cy="215" r="170" fill="url(#glowViolet)"/>
+  <circle cx="690" cy="215" r="120" fill="url(#glowCyan)"/>
+  <rect x="0" y="0" width="900" height="120" fill="url(#scan)" class="scanline"/>
+  <rect x="0.5" y="0.5" width="899" height="429" rx="18" fill="none" stroke="#1f2b3d"/>
+
+  <!-- top chrome -->
+  <g class="mono">
+    <circle cx="26" cy="24" r="5" fill="#ef4444"/>
+    <circle cx="44" cy="24" r="5" fill="#fbbf24"/>
+    <circle cx="62" cy="24" r="5" fill="#34d399"/>
+    <text x="86" y="28" class="dim" font-size="12">umair@agent-os: ~/mission-control</text>
+    <text x="870" y="28" text-anchor="end" font-size="11" class="dim">v5.1 · <tspan class="ok">●</tspan> ONLINE</text>
+  </g>
+  <line x1="0" y1="44" x2="900" y2="44" stroke="#1f2b3d"/>
+
+  <!-- terminal -->
+  <g class="mono t" transform="translate(28, 78)">
+    <g clip-path="url(#c1)"><text y="0"><tspan class="cy">$</tspan> ./boot agent-os --user umair</text></g>
+
+    <g clip-path="url(#c2)" transform="translate(0,26)"><text y="0"><tspan class="ok">[ ok ]</tspan> kernel ............... <tspan class="am">loaded</tspan></text></g>
+    <g clip-path="url(#c3)" transform="translate(0,52)"><text y="0"><tspan class="ok">[ ok ]</tspan> mounting /skills ..... <tspan class="am">18 modules</tspan></text></g>
+    <g clip-path="url(#c4)" transform="translate(0,78)"><text y="0"><tspan class="ok">[ ok ]</tspan> spawning agents ...... <tspan class="am">6 online</tspan></text></g>
+    <g clip-path="url(#c5)" transform="translate(0,104)"><text y="0"><tspan class="ok">[ ok ]</tspan> linking tools ........ <tspan class="vi">MCP · LangGraph · n8n</tspan></text></g>
+    <g clip-path="url(#c6)" transform="translate(0,130)"><text y="0"><tspan class="ok">[ ok ]</tspan> handshake ............ <tspan class="cy">umairiqbal.com</tspan></text></g>
+
+    <g clip-path="url(#c7)" transform="translate(0,170)">
+      <text y="0" font-size="20" font-weight="700" fill="#f1f5f9" class="sans">Umair Iqbal</text>
+    </g>
+    <g clip-path="url(#c8)" transform="translate(0,196)">
+      <text y="0" font-size="13"><tspan class="cy">›</tspan> AI Solutions Architect <tspan class="dim">/</tspan> Agent Systems <tspan class="dim">/</tspan> Design</text>
+    </g>
+
+    <g class="fade d9" transform="translate(0,232)">
+      <text y="0"><tspan class="cy">$</tspan> <tspan class="dim">awaiting next mission</tspan></text>
+      <rect x="196" y="-12" width="8" height="15" fill="#22d3ee" class="cursor"/>
+    </g>
+  </g>
+
+  <!-- agent orbit -->
+  <g transform="translate(690, 225)">
+    <!-- expanding rings -->
+    <circle r="70" fill="none" stroke="#22d3ee" stroke-width="1" class="ring"/>
+    <circle r="70" fill="none" stroke="#a78bfa" stroke-width="1" class="ring r2"/>
+    <circle r="70" fill="none" stroke="#22d3ee" stroke-width="1" class="ring r3"/>
+
+    <!-- orbit paths -->
+    <circle r="62" fill="none" stroke="#243247" stroke-width="1" stroke-dasharray="3 5"/>
+    <circle r="112" fill="none" stroke="#243247" stroke-width="1" stroke-dasharray="2 6"/>
+    <circle r="112" fill="none" stroke="#22d3ee" stroke-width="1.2" stroke-dasharray="40 664" stroke-linecap="round" opacity="0.8">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="62" fill="none" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="26 364" stroke-linecap="round" opacity="0.9">
+      <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="5s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- core -->
+    <circle r="34" fill="url(#core)" filter="url(#blur8)" opacity="0.7" class="pulse"/>
+    <circle r="26" fill="#0b1020" stroke="url(#core)" stroke-width="2"/>
+    <text y="5" text-anchor="middle" class="mono" font-size="13" font-weight="700" fill="#f1f5f9">UI</text>
+    <text y="46" text-anchor="middle" class="mono" fill="#94a3b8" font-size="9" letter-spacing="2">ORCHESTRATOR</text>
+
+    <!-- inner orbit: 3 agents, counter-rotating -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="18s" repeatCount="indefinite"/>
+      <g class="node n1" transform="rotate(0) translate(0,-62)">
+        <circle r="7" fill="#0b1020" stroke="#a78bfa" stroke-width="1.5"/>
+        <circle r="2.5" fill="#a78bfa" class="live"/>
+      </g>
+      <g class="node n2" transform="rotate(120) translate(0,-62)">
+        <circle r="7" fill="#0b1020" stroke="#a78bfa" stroke-width="1.5"/>
+        <circle r="2.5" fill="#a78bfa" class="live"/>
+      </g>
+      <g class="node n3" transform="rotate(240) translate(0,-62)">
+        <circle r="7" fill="#0b1020" stroke="#a78bfa" stroke-width="1.5"/>
+        <circle r="2.5" fill="#a78bfa" class="live"/>
+      </g>
+    </g>
+
+    <!-- outer orbit: labelled agents -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="40s" repeatCount="indefinite"/>
+      <g class="node n1" transform="rotate(0) translate(0,-112)">
+        <circle r="10" fill="#0b1020" stroke="#22d3ee" stroke-width="1.5"/>
+        <circle r="3" fill="#22d3ee" class="live"/>
+        <g transform="rotate(0)"><animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="40s" repeatCount="indefinite" additive="sum"/>
+          <text y="-18" text-anchor="middle" class="mono cy" font-size="9" letter-spacing="1">PLANNER</text></g>
+      </g>
+      <g class="node n2" transform="rotate(60) translate(0,-112)">
+        <circle r="10" fill="#0b1020" stroke="#34d399" stroke-width="1.5"/>
+        <circle r="3" fill="#34d399" class="live"/>
+        <g transform="rotate(-60)"><animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="40s" repeatCount="indefinite" additive="sum"/>
+          <text y="-18" text-anchor="middle" class="mono ok" font-size="9" letter-spacing="1">RESEARCH</text></g>
+      </g>
+      <g class="node n3" transform="rotate(120) translate(0,-112)">
+        <circle r="10" fill="#0b1020" stroke="#fbbf24" stroke-width="1.5"/>
+        <circle r="3" fill="#fbbf24" class="live"/>
+        <g transform="rotate(-120)"><animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="40s" repeatCount="indefinite" additive="sum"/>
+          <text y="-18" text-anchor="middle" class="mono am" font-size="9" letter-spacing="1">CODER</text></g>
+      </g>
+      <g class="node n4" transform="rotate(180) translate(0,-112)">
+        <circle r="10" fill="#0b1020" stroke="#f472b6" stroke-width="1.5"/>
+        <circle r="3" fill="#f472b6" class="live"/>
+        <g transform="rotate(-180)"><animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="40s" repeatCount="indefinite" additive="sum"/>
+          <text y="-18" text-anchor="middle" class="mono" fill="#f472b6" font-size="9" letter-spacing="1">DESIGNER</text></g>
+      </g>
+      <g class="node n5" transform="rotate(240) translate(0,-112)">
+        <circle r="10" fill="#0b1020" stroke="#a78bfa" stroke-width="1.5"/>
+        <circle r="3" fill="#a78bfa" class="live"/>
+        <g transform="rotate(-240)"><animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="40s" repeatCount="indefinite" additive="sum"/>
+          <text y="-18" text-anchor="middle" class="mono vi" font-size="9" letter-spacing="1">OPS</text></g>
+      </g>
+      <g class="node n6" transform="rotate(300) translate(0,-112)">
+        <circle r="10" fill="#0b1020" stroke="#38bdf8" stroke-width="1.5"/>
+        <circle r="3" fill="#38bdf8" class="live"/>
+        <g transform="rotate(-300)"><animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="40s" repeatCount="indefinite" additive="sum"/>
+          <text y="-18" text-anchor="middle" class="mono" fill="#38bdf8" font-size="9" letter-spacing="1">QA</text></g>
+      </g>
+    </g>
+  </g>
+
+  <!-- status bar -->
+  <line x1="0" y1="392" x2="900" y2="392" stroke="#1f2b3d"/>
+  <g class="mono" font-size="11" transform="translate(28, 414)">
+    <circle cx="4" cy="-4" r="3.5" fill="#34d399" class="live"/>
+    <text x="14" y="0" class="ok">SYSTEM ONLINE</text>
+    <text x="150" y="0" class="dim">web</text><text x="180" y="0" class="cy">umairiqbal.com</text>
+    <text x="320" y="0" class="dim">mail</text><text x="356" y="0" class="cy">hello@umairiqbal.com</text>
+    <text x="842" y="0" text-anchor="end" class="dim">agents: <tspan class="am">6</tspan> · tools: <tspan class="am">18</tspan> · uptime: <tspan class="ok">∞</tspan></text>
+  </g>
+</svg>
