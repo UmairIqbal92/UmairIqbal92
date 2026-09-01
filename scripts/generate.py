@@ -135,14 +135,25 @@ def fetch_achievements(login: str) -> list[dict]:
     except Exception as e:  # noqa: BLE001
         print(f"achievements: fetch failed ({e})", file=sys.stderr)
         return []
+    print(f"achievements: page {len(html)} chars, 'profile/achievements' x{html.count('profile/achievements')}, "
+          f"'Achievement:' x{html.count('Achievement:')}", file=sys.stderr)
     out, seen = [], set()
-    for m in re.finditer(r'<img[^>]+src="(https://github\.com/images/modules/profile/achievements/[^"]+)"[^>]*alt="Achievement: ([^"]+)"', html):
-        url, name = m.group(1), m.group(2)
+    for m in re.finditer(r"<img\b[^>]*>", html):
+        tag = m.group(0)
+        if "profile/achievements" not in tag:
+            continue
+        src = re.search(r'src="([^"]+)"', tag)
+        alt = re.search(r'alt="Achievement: ([^"]+)"', tag)
+        if not src or not alt:
+            continue
+        url, name = src.group(1), alt.group(1)
+        if url.startswith("/"):
+            url = "https://github.com" + url
         if name in seen:
             continue
         seen.add(name)
         tier = 1
-        tm = re.search(r'achievement-tier-label[^>]*>\s*x(\d+)', html[m.end():m.end() + 800])
+        tm = re.search(r'achievement-tier-label[^>]*>\s*x(\d+)', html[m.end():m.end() + 1200])
         if tm:
             tier = int(tm.group(1))
         img = ""
