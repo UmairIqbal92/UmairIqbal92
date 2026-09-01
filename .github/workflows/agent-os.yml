@@ -30,7 +30,9 @@ jobs:
 
       - name: Render assets from live GitHub data
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional: add a repo secret PROFILE_TOKEN (classic PAT, scopes: read:user, repo)
+          # so private contribution counts are included. Falls back to the Actions token.
+          GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
         run: python scripts/generate.py --user "${{ github.repository_owner }}"
 
       - name: Commit if changed
