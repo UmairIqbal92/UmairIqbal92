@@ -169,5 +169,24 @@
   "quote": "Ship the loop, not the demo.",
   "linkedin": "",
   "x": "",
-  "telegram": ""
+  "telegram": "",
+  "private_label": "Dozens of",
+  "private_projects": [
+    {
+      "name": "Atlas",
+      "teaser": "Multi-agent operations platform for a client in"
+    },
+    {
+      "name": "Relay",
+      "teaser": "Workflow engine wiring LLMs into"
+    },
+    {
+      "name": "Foundry",
+      "teaser": "Design-to-code toolkit used internally for"
+    },
+    {
+      "name": "Lantern",
+      "teaser": "Voice and chat assistant stack built on"
+    }
+  ]
 }

@@ -40,6 +40,7 @@ query($login:String!){
   user(login:$login){
     createdAt
     followers{ totalCount }
+    privateRepos: repositories(privacy:PRIVATE, ownerAffiliations:OWNER){ totalCount }
     repositories(first:100, ownerAffiliations:OWNER, privacy:PUBLIC, isFork:false,
                  orderBy:{field:STARGAZERS, direction:DESC}){
       totalCount
@@ -113,6 +114,8 @@ def fetch(login: str, token: str) -> dict:
         "stars": stars,
         "repos": u["repositories"]["totalCount"],
         "followers": u["followers"]["totalCount"],
+        "private_repos": u["privateRepos"]["totalCount"],
+        "private_contribs": cc["restrictedContributionsCount"],
         "langs": langs,
         "years": years,
         "alltime": sum(t for _, t, _ in years),
@@ -139,7 +142,7 @@ def demo() -> dict:
     total = sum(c for w in weeks for _, c, _ in w)
     years = [(2022, 980, 800), (2023, 1640, 1400), (2024, 2210, 1900), (2025, 2860, 2400), (2026, total, int(total * .82))]
     return {"weeks": weeks, "total": total, "commits": int(total * .82), "prs": 38, "issues": 0, "reviews": 0,
-            "stars": 146, "repos": 24, "followers": 58,
+            "stars": 146, "repos": 24, "followers": 58, "private_repos": 0, "private_contribs": 640,
             "langs": {"Python": 420, "TypeScript": 300, "JavaScript": 160, "HTML": 70, "CSS": 55, "Shell": 20},
             "years": years, "alltime": sum(t for _, t, _ in years), "since": 2022}
 
@@ -255,7 +258,7 @@ def overview(d: dict) -> str:
         if i:
             body.append(f'<line x1="{x-18:.0f}" y1="92" x2="{x-18:.0f}" y2="176" stroke="{BORDER}"/>')
     extras = [("Commits", d["commits"]), ("Pull requests", d["prs"]), ("Stars", d["stars"]),
-              ("Followers", d["followers"]), ("Public repos", d["repos"])]
+              ("Followers", d["followers"]), ("Public repos", d["repos"]), ("Private repos", d["private_repos"])]
     line = "    ·    ".join(f"{k} {fmt(v)}" for k, v in extras if v)
     body.append(t(PAD, 212, line, 15, MUTED, 400, cls="in", extra='style="animation-delay:.7s"'))
     return svg(h, "".join(body), "Overview")
@@ -404,6 +407,47 @@ def work(c: dict) -> str:
     return svg(h, "".join(body), "Selected work")
 
 
+def lock_icon(x: float, y: float) -> str:
+    return (f'<rect x="{x-6}" y="{y-1}" width="12" height="9" rx="2" fill="none" stroke="{MUTED}" stroke-width="1.4"/>'
+            f'<path d="M{x-3.5} {y-1} V{y-4} a3.5 3.5 0 0 1 7 0 V{y-1}" fill="none" stroke="{MUTED}" stroke-width="1.4"/>')
+
+
+def private_work(c: dict, d: dict) -> str:
+    projects = c.get("private_projects", [])
+    n = d.get("private_repos", 0) or 0
+    headline = f"{n} private repositories" if n else f"{c.get('private_label', 'Dozens of')} private repositories"
+    sub = "Client work, internal tools and experiments that never go public."
+    pc = d.get("private_contribs", 0) or 0
+    if pc:
+        sub += f"  {fmt(pc)} private contributions in the last 12 months."
+    h = 190 + 58 * len(projects) + 10
+    body = [panel(h), title("Private work", "Not everything ships in public")]
+    body.append(f'<g class="in" style="animation-delay:.15s">{t(PAD, 128, headline, 34, WHITE, 600)}'
+                f'{t(PAD, 158, sub, 15, MUTED)}</g>')
+    body.append(f'<line x1="{PAD}" y1="180" x2="{W-PAD}" y2="180" stroke="{BORDER}"/>')
+    rng = random.Random(21)
+    for i, pr in enumerate(projects):
+        y = 200 + i * 58
+        pw = 8.4 * 7 + 30
+        body.append(f'<g class="in" style="animation-delay:{.35+i*.1:.2f}s">'
+                    f'{lock_icon(PAD + 6, y + 18)}'
+                    f'{t(PAD + 26, y + 24, pr["name"], 17, WHITE, 600)}'
+                    f'{t(PAD + 26, y + 44, pr["teaser"], 14, MUTED)}')
+        # redacted blocks after the teaser
+        rx = PAD + 26 + len(pr["teaser"]) * 6.5 + 8
+        for k in range(rng.randint(2, 4)):
+            bw = rng.randint(28, 70)
+            if rx + bw > W - PAD - pw - 24:
+                break
+            body.append(f'<rect x="{rx:.0f}" y="{y+34}" width="{bw}" height="12" rx="2" fill="#2e2e2e"/>')
+            rx += bw + 8
+        body.append(f'<rect x="{W-PAD-pw:.0f}" y="{y+14}" width="{pw:.0f}" height="30" rx="15" fill="{FILL}" stroke="{BORDER}"/>'
+                    f'{t(W - PAD - pw/2, y + 34, "Private", 13, TEXT, 500, "middle")}'
+                    + (f'<line x1="{PAD}" y1="{y+56}" x2="{W-PAD}" y2="{y+56}" stroke="{BORDER}"/>' if i < len(projects) - 1 else "")
+                    + "</g>")
+    return svg(h, "".join(body), "Private work")
+
+
 def contact(c: dict) -> str:
     rows = [("Website", c["site"]), ("Email", c["email"]), ("GitHub", f"github.com/{c['handle']}"),
             ("LinkedIn", c.get("linkedin", "")), ("X", c.get("x", "")), ("Telegram", c.get("telegram", ""))]
@@ -448,10 +492,9 @@ def main() -> None:
         "hero.svg": hero(CONFIG),
         "overview.svg": overview(data),
         "contributions.svg": contributions(data),
-        "languages.svg": languages(data),
         "capabilities.svg": capabilities(CONFIG),
         "pipeline.svg": pipeline(CONFIG),
-        "work.svg": work(CONFIG),
+        "private.svg": private_work(CONFIG, data),
         "contact.svg": contact(CONFIG),
         "footer.svg": footer(CONFIG),
     }

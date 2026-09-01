@@ -16,13 +16,11 @@
   <img src="https://raw.githubusercontent.com/UmairIqbal92/UmairIqbal92/output/github-snake-dark.svg" alt="" width="100%" />
 </picture>
 
-<img src="assets/languages.svg" width="100%" alt="Languages" />
-
 <img src="assets/capabilities.svg" width="100%" alt="Capabilities" />
 
 <img src="assets/pipeline.svg" width="100%" alt="How I build" />
 
-<img src="assets/work.svg" width="100%" alt="Selected work" />
+<img src="assets/private.svg" width="100%" alt="Private work" />
 
 <!-- BLOG-POST-LIST:START -->
 <!-- BLOG-POST-LIST:END -->
